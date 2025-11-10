@@ -1,0 +1,99 @@
+{
+  "system_name": "Smart Agriculture AI-IoT System",
+  "total_sensors": 10,
+  "sensors": [
+    {
+      "id": 1,
+      "name": "Soil Moisture Sensor",
+      "type": "Capacitive",
+      "range": "0-100%",
+      "accuracy": "±3%",
+      "sampling_interval_minutes": 30,
+      "cost_usd": 45
+    },
+    {
+      "id": 2,
+      "name": "Soil Temperature Sensor",
+      "type": "PT100 RTD",
+      "range": "-40 to +80°C",
+      "accuracy": "±0.5°C",
+      "sampling_interval_minutes": 30,
+      "cost_usd": 35
+    },
+    {
+      "id": 3,
+      "name": "Air Temperature Sensor",
+      "type": "DHT22",
+      "range": "-40 to +80°C",
+      "accuracy": "±0.5°C",
+      "sampling_interval_minutes": 15,
+      "cost_usd": 25
+    },
+    {
+      "id": 4,
+      "name": "Humidity Sensor",
+      "type": "DHT22",
+      "range": "0-100% RH",
+      "accuracy": "±2%",
+      "sampling_interval_minutes": 15,
+      "cost_usd": 25
+    },
+    {
+      "id": 5,
+      "name": "Soil pH Sensor",
+      "type": "Analog Glass Electrode",
+      "range": "0-14 pH",
+      "accuracy": "±0.2 pH",
+      "sampling_interval_minutes": 60,
+      "cost_usd": 120
+    },
+    {
+      "id": 6,
+      "name": "NPK Sensor",
+      "type": "Optical",
+      "range": "0-200 mg/kg",
+      "accuracy": "±5%",
+      "sampling_interval_minutes": 120,
+      "cost_usd": 200
+    },
+    {
+      "id": 7,
+      "name": "Rainfall Sensor",
+      "type": "Tipping Bucket",
+      "range": "0-300 mm",
+      "accuracy": "±2%",
+      "sampling_interval_minutes": 1,
+      "cost_usd": 80
+    },
+    {
+      "id": 8,
+      "name": "Wind Speed Sensor",
+      "type": "Anemometer",
+      "range": "0-40 m/s",
+      "accuracy": "±0.5 m/s",
+      "sampling_interval_minutes": 5,
+      "cost_usd": 60
+    },
+    {
+      "id": 9,
+      "name": "Light Intensity Sensor",
+      "type": "Photodiode",
+      "range": "0-200,000 lux",
+      "accuracy": "±5%",
+      "sampling_interval_minutes": 10,
+      "cost_usd": 55
+    },
+    {
+      "id": 10,
+      "name": "UV Radiation Sensor",
+      "type": "UV Photodiode",
+      "range": "0-50 W/m²",
+      "accuracy": "±3%",
+      "sampling_interval_minutes": 15,
+      "cost_usd": 75
+    }
+  ],
+  "total_cost_per_farm": 720,
+  "expected_yield_improvement": "15-20%",
+  "water_savings_percentage": "25-30%"
+}

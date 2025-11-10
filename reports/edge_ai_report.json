@@ -1,0 +1,38 @@
+{
+    "assignment": "Edge AI Prototype - Recyclable Items Classification",
+    "timestamp": "2025-11-10T16:38:57.025126",
+    "model_config": {
+        "model_name": "RecyclableItemsClassifier",
+        "input_shape": [
+            224,
+            224,
+            3
+        ],
+        "batch_size": 32,
+        "epochs": 20,
+        "learning_rate": 0.001,
+        "validation_split": 0.2,
+        "num_classes": 3,
+        "classes": [
+            "plastic",
+            "metal",
+            "paper"
+        ]
+    },
+    "metrics": {
+        "test_accuracy": 0.9777777791023254,
+        "test_loss": 0.4026452898979187
+    },
+    "model_info": {
+        "total_parameters": 2422339,
+        "tflite_size_mb": 2.5497207641601562
+    },
+    "framework": "TensorFlow Lite",
+    "deployment_benefits": {
+        "real_time_inference": "Sub-100ms inference on edge devices",
+        "reduced_latency": "No cloud communication required",
+        "privacy": "Data processing happens on device",
+        "bandwidth": "No need to send raw data to cloud",
+        "cost_effective": "Reduced cloud computing costs"
+    }
+}
