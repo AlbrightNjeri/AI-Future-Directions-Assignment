@@ -1,0 +1,276 @@
+{
+    "system": "Smart Agriculture AI-IoT",
+    "timestamp": "2025-11-11T12:52:24.667934",
+    "total_sensors": 12,
+    "sensors": {
+        "soil_sensors": [
+            {
+                "id": 1,
+                "name": "Soil Moisture Sensor",
+                "type": "Capacitive",
+                "range": "0-100%",
+                "accuracy": "\u00b13%",
+                "sampling_interval_minutes": 30,
+                "cost_usd": 45
+            },
+            {
+                "id": 2,
+                "name": "Soil Temperature Sensor",
+                "type": "PT100 RTD",
+                "range": "-40 to +80\u00b0C",
+                "accuracy": "\u00b10.5\u00b0C",
+                "sampling_interval_minutes": 30,
+                "cost_usd": 35
+            },
+            {
+                "id": 3,
+                "name": "Soil pH Sensor",
+                "type": "Analog Glass Electrode",
+                "range": "0-14 pH",
+                "accuracy": "\u00b10.2 pH",
+                "sampling_interval_minutes": 60,
+                "cost_usd": 120
+            },
+            {
+                "id": 4,
+                "name": "NPK Sensor",
+                "type": "Optical",
+                "range": "0-200 mg/kg",
+                "accuracy": "\u00b15%",
+                "sampling_interval_minutes": 120,
+                "cost_usd": 200
+            }
+        ],
+        "weather_sensors": [
+            {
+                "id": 5,
+                "name": "Air Temperature Sensor",
+                "type": "DHT22",
+                "range": "-40 to +80\u00b0C",
+                "accuracy": "\u00b10.5\u00b0C",
+                "sampling_interval_minutes": 15,
+                "cost_usd": 25
+            },
+            {
+                "id": 6,
+                "name": "Humidity Sensor",
+                "type": "DHT22",
+                "range": "0-100% RH",
+                "accuracy": "\u00b12%",
+                "sampling_interval_minutes": 15,
+                "cost_usd": 25
+            },
+            {
+                "id": 7,
+                "name": "Rainfall Sensor",
+                "type": "Tipping Bucket",
+                "range": "0-300 mm",
+                "accuracy": "\u00b12%",
+                "sampling_interval_minutes": 1,
+                "cost_usd": 80
+            },
+            {
+                "id": 8,
+                "name": "Wind Speed Sensor",
+                "type": "Anemometer",
+                "range": "0-40 m/s",
+                "accuracy": "\u00b10.5 m/s",
+                "sampling_interval_minutes": 5,
+                "cost_usd": 60
+            },
+            {
+                "id": 9,
+                "name": "Light Intensity Sensor",
+                "type": "Photodiode",
+                "range": "0-200,000 lux",
+                "accuracy": "\u00b15%",
+                "sampling_interval_minutes": 10,
+                "cost_usd": 55
+            },
+            {
+                "id": 10,
+                "name": "UV Radiation Sensor",
+                "type": "UV Photodiode",
+                "range": "0-50 W/m\u00b2",
+                "accuracy": "\u00b13%",
+                "sampling_interval_minutes": 15,
+                "cost_usd": 75
+            }
+        ],
+        "vision_sensors": [
+            {
+                "id": 11,
+                "name": "RGB Camera",
+                "type": "12MP",
+                "purpose": "Pest/disease detection",
+                "cost_usd": 150
+            },
+            {
+                "id": 12,
+                "name": "Thermal Camera",
+                "type": "320x256",
+                "purpose": "Crop stress detection",
+                "cost_usd": 300
+            }
+        ]
+    },
+    "ml_model": {
+        "input_shape": "(sequence_length=30, features=25)",
+        "layers": [
+            {
+                "layer": "LSTM Layer 1",
+                "units": 64,
+                "activation": "tanh",
+                "return_sequences": true,
+                "dropout": 0.2
+            },
+            {
+                "layer": "LSTM Layer 2",
+                "units": 32,
+                "activation": "tanh",
+                "return_sequences": false,
+                "dropout": 0.2
+            },
+            {
+                "layer": "Dense Layer 1",
+                "units": 16,
+                "activation": "relu"
+            },
+            {
+                "layer": "Dense Layer 2",
+                "units": 8,
+                "activation": "relu"
+            },
+            {
+                "layer": "Output Layer",
+                "units": 1,
+                "activation": "linear",
+                "output_range": "0-10,000 kg/hectare"
+            }
+        ],
+        "total_parameters": 12737,
+        "training_config": {
+            "loss_function": "Mean Squared Error (MSE)",
+            "optimizer": "Adam (lr=0.001)",
+            "batch_size": 32,
+            "epochs": 50,
+            "validation_split": 0.2
+        },
+        "expected_performance": {
+            "rmse": "<5% of average yield",
+            "r2_score": ">0.92",
+            "mae": "<3% of average yield"
+        },
+        "input_features_25": {
+            "current_state_10": [
+                "Soil Moisture (%)",
+                "Soil Temperature (\u00b0C)",
+                "Air Temperature (\u00b0C)",
+                "Humidity (%)",
+                "Soil pH",
+                "Nitrogen (mg/kg)",
+                "Phosphorus (mg/kg)",
+                "Potassium (mg/kg)",
+                "Rainfall (mm)",
+                "Wind Speed (m/s)"
+            ],
+            "historical_trends_7": [
+                "Moisture trend",
+                "Temperature trend",
+                "Humidity trend",
+                "NPK depletion rate",
+                "Disease pressure index",
+                "Water stress indicator",
+                "Pest activity index"
+            ],
+            "derived_features_8": [
+                "Days since planting",
+                "Growth stage (0-6)",
+                "Soil type classification",
+                "Field history",
+                "Weather forecast (3-day)",
+                "Irrigation trigger threshold",
+                "Critical window flags",
+                "Cumulative rainfall"
+            ]
+        }
+    },
+    "data_flow_architecture": {
+        "Layer 1 - Sensors (Field Level)": {
+            "components": [
+                "Soil Sensors",
+                "Weather Sensors",
+                "Vision Sensors"
+            ],
+            "data_frequency": "30-120 minutes",
+            "output": "Raw sensor readings"
+        },
+        "Layer 2 - Data Aggregation (Microcontroller)": {
+            "components": [
+                "Arduino/STM32",
+                "Local Buffer",
+                "Data Validation"
+            ],
+            "data_frequency": "Real-time",
+            "buffer_capacity": "1,000+ readings",
+            "output": "Validated, aggregated data"
+        },
+        "Layer 3 - Edge Processing (Raspberry Pi)": {
+            "components": [
+                "LSTM Model",
+                "Real-time Inference",
+                "Local Decision Making"
+            ],
+            "processing_latency": "<2 seconds",
+            "features": [
+                "Yield Prediction",
+                "Irrigation Triggers",
+                "Alert Generation"
+            ],
+            "output": "Real-time predictions & decisions"
+        },
+        "Layer 4 - Cloud Services (AWS/Azure)": {
+            "components": [
+                "IoT Core",
+                "Time-series Database",
+                "ML Pipeline",
+                "Analytics"
+            ],
+            "features": [
+                "Data Archival",
+                "Model Retraining",
+                "Advanced Analytics"
+            ],
+            "output": "Historical analysis & insights"
+        },
+        "Layer 5 - User Interface & Actions": {
+            "components": [
+                "Mobile/Web Dashboard",
+                "Automated Actuators",
+                "Notifications"
+            ],
+            "features": [
+                "Real-time Metrics",
+                "Irrigation Control",
+                "Alerts & Recommendations"
+            ],
+            "output": "User actions & decisions"
+        }
+    },
+    "expected_benefits": {
+        "Water Efficiency": "25-30% reduction in irrigation water",
+        "Yield Improvement": "15-20% increase in crop production",
+        "Disease Prevention": "40% reduction in crop loss",
+        "Labor Cost Reduction": "30% automation of routine tasks",
+        "Fertilizer Optimization": "20-25% reduction in chemical use",
+        "Environmental Impact": "Reduced water usage & chemical runoff",
+        "System Uptime": "99.5% SLA with edge redundancy"
+    },
+    "financial_analysis": {
+        "initial_investment_per_hectare": 720,
+        "annual_operational_cost": 200,
+        "annual_benefits": "900-1,200",
+        "roi_payback_period_years": "2-3",
+        "five_year_roi": "30,000+"
+    }
+}
