@@ -1,9 +1,8 @@
 # 🚀 Pioneering Tomorrow's AI Innovations: Edge AI & IoT Integration
 
 **Assignment Theme:** AI Future Directions  
-**Institution:** [Your Institution Name]  
-**Date Submitted:** [Submission Date]  
-**Author:** [Your Name]
+**Date Submitted:** 11th November, 2025  
+**Author:** Albright Njeri Njoroge
 
 ---
 
